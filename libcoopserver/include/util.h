@@ -22,8 +22,7 @@ FUNCNAME##_t FUNCNAME = (FUNCNAME##_t)ADDRESS;
  * Declare a sm64coopdx function.
  */
 #define COOP_FUNC_DECL(FUNCRET, FUNCNAME, ...) \
-DETOUR_DECL_TYPE(FUNCRET, FUNCNAME, __VA_ARGS__); \
-extern FUNCNAME##_t FUNCNAME;
+DETOUR_DECL_TYPE(FUNCRET, FUNCNAME, __VA_ARGS__);
 
 /*
  * Implement a sm64coopdx function.
