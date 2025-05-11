@@ -19,6 +19,13 @@ detour_ctx_t FUNCNAME##_ctx; \
 FUNCNAME##_t FUNCNAME = (FUNCNAME##_t)ADDRESS;
 
 /*
+ * Install a detour.
+ */
+#define DETOUR_INSTALL(FUNCNAME) \
+detour_init(&FUNCNAME##_ctx, FUNCNAME, FUNCNAME##_hook); \
+detour_enable(&FUNCNAME##_ctx);
+
+/*
  * Declare a sm64coopdx function.
  */
 #define COOP_FUNC_DECL(FUNCRET, FUNCNAME, ...) \

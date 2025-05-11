@@ -1,12 +1,12 @@
 #include "hooks/pc_main.h"
 
-#include "coop/game/game_init.h"
-#include "coop/pc/djui.h"
-#include "coop/pc/fs.h"         // IWYU pragma: keep
-#include "coop/pc/gfx/gfx_pc.h" // IWYU pragma: keep
-#include "coop/pc/pc_main.h"
-#include "coop/pc/platform.h"   // IWYU pragma: keep
-#include "coop/pc/rom_checker.h"
+#include "coop/game/game_init.h" // IWYU pragma: keep
+#include "coop/pc/djui.h"        // IWYU pragma: keep
+#include "coop/pc/fs.h"          // IWYU pragma: keep
+#include "coop/pc/gfx/gfx_pc.h"  // IWYU pragma: keep
+#include "coop/pc/pc_main.h"     // IWYU pragma: keep
+#include "coop/pc/platform.h"    // IWYU pragma: keep
+#include "coop/pc/rom_checker.h" // IWYU pragma: keep
 #include "offsets.h"
 #include "util.h"
 
@@ -28,7 +28,8 @@ int pc_main__main_hook(int argc, char *argv[]) {
   }
 
   // Check for ROM
-  bool valid_rom = COOP_CALL(main_rom_handler, ADDRESS_ROM_CHECKER__MAIN_ROM_HANDLER);
+  bool valid_rom =
+      COOP_CALL(main_rom_handler, ADDRESS_ROM_CHECKER__MAIN_ROM_HANDLER);
   if (!valid_rom) {
     printf("Couldn't find ROM");
     return 1;
@@ -37,17 +38,17 @@ int pc_main__main_hook(int argc, char *argv[]) {
   // Enforce headless APIs
   memcpy((void *)ADDRESS_GFX__GFX_SDL, (void *)ADDRESS_GFX__GFX_DUMMY_WM,
          SIZEOF_GFX__GFX_WAPI);
-  memcpy((void *)ADDRESS_GFX__GFX_OPENGL,
-         (void *)ADDRESS_GFX__GFX_DUMMY_R, SIZEOF_GFX__GFX_RAPI);
+  memcpy((void *)ADDRESS_GFX__GFX_OPENGL, (void *)ADDRESS_GFX__GFX_DUMMY_R,
+         SIZEOF_GFX__GFX_RAPI);
 
   // Init
-  COOP_CALL(gfx_init, ADDRESS_GFX__GFX_INIT,
-            (void*)ADDRESS_GFX__GFX_SDL, (void*)ADDRESS_GFX__GFX_OPENGL,
-            "");
+  COOP_CALL(gfx_init, ADDRESS_GFX__GFX_INIT, (void *)ADDRESS_GFX__GFX_SDL,
+            (void *)ADDRESS_GFX__GFX_OPENGL, "");
   COOP_CALL(main_game_init, ADDRESS_PC_MAIN__MAIN_GAME_INIT, NULL);
   COOP_CALL(thread5_game_loop, ADDRESS_GAME__THREAD5_GAME_LOOP, NULL);
 
-  memset((void *)ADDRESS_AUDIO__AUDIO_API, ADDRESS_AUDIO__AUDIO_API, sizeof(void*));
+  memset((void *)ADDRESS_AUDIO__AUDIO_API, ADDRESS_AUDIO__AUDIO_API,
+         sizeof(void *));
 
   COOP_CALL(djui_init, ADDRESS_DJUI__DJUI_INIT);
   COOP_CALL(djui_unicode_init, ADDRESS_DJUI__DJUI_UNICODE_INIT);

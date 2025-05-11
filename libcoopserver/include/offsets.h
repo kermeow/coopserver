@@ -18,7 +18,7 @@
 
 #define ADDRESS_GAME__THREAD5_GAME_LOOP 0x683dd0
 
-
+#define ADDRESS_CONFIGFILE__SAVE 0x71e780
 
 #pragma endregion
 
@@ -34,5 +34,8 @@
 #define ADDRESS_GFX__GFX_OPENGL 0x33ef340
 #define ADDRESS_GFX__GFX_DUMMY_R 0x33ef1c0
 #define SIZEOF_GFX__GFX_RAPI 0xb8
+
+#define ADDRESS_CONFIG__OPTIONS 0x2cf4660
+#define SIZEOF_CONFIG__OPTIONS 0x1000
 
 #pragma endregion
