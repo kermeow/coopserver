@@ -20,6 +20,8 @@
 
 #define ADDRESS_CONFIGFILE__SAVE 0x71e780
 
+#define ADDRESS_MODS__MODS_LOAD 0x748bb0
+
 #pragma endregion
 
 #pragma region Global Variables

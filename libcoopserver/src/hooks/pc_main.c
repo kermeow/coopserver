@@ -7,6 +7,7 @@
 #include "coop/pc/pc_main.h"     // IWYU pragma: keep
 #include "coop/pc/platform.h"    // IWYU pragma: keep
 #include "coop/pc/rom_checker.h" // IWYU pragma: keep
+#include "crash_handler.h"
 #include "offsets.h"
 #include "util.h"
 
@@ -16,6 +17,8 @@
 DETOUR_IMPL(pc_main__main, ADDRESS_PC_MAIN__MAIN)
 int pc_main__main_hook(int argc, char *argv[]) {
   printf("libcoopserver main\n");
+
+  init_crash_handler();
 
   // Mount FS in managed folder
   char *exe_path =
