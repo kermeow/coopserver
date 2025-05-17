@@ -29,3 +29,6 @@ struct ConfigOption {
 
 static const struct ConfigOption *options = (struct ConfigOption*)ADDRESS_CONFIG__OPTIONS;
 static const unsigned int optionsLen = SIZEOF_CONFIG__OPTIONS / sizeof(struct ConfigOption);
+
+// Custom
+const struct ConfigOption* find_option(const char* name);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "libdetour.h" // IWYU pragma: export
+#include "libdetour.h" // IWYU pragma: keep
 
 /*
  * Declare everything for a detour.
