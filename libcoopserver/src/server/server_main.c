@@ -60,7 +60,9 @@ int server_main(int argc, char *argv[]) {
   *find_option("uncapped_framerate")->boolValue = false;
   *find_option("frame_limit")->uintValue = 30;
   const struct ConfigOption* playerNameOpt = find_option("coop_player_name");
-  snprintf(playerNameOpt->stringValue, playerNameOpt->maxStringLength, "coopserver test");
+  snprintf(playerNameOpt->stringValue, playerNameOpt->maxStringLength, "server");
+  *find_option("skip_intro")->boolValue = true;
+  *find_option("pause_anywhere")->boolValue = true;
 
   COOP_CALL(network_set_system, ADDRESS_NETWORK__NETWORK_SET_SYSTEM, NS_COOPNET);
   COOP_CALL(network_init, ADDRESS_NETWORK__NETWORK_INIT, NT_SERVER, false);

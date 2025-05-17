@@ -5,7 +5,7 @@ main_src = [
 	'src/server/server_main.c',
 	'src/coop/pc/configfile.c'
 ]
-hooks_src = ['src/hooks/pc_main.c', 'src/hooks/configfile.c']
+hooks_src = ['src/hooks/pc_main.c', 'src/hooks/configfile.c', 'src/hooks/coopnet.c', 'src/hooks/mods.c']
 
 src = [main_src, hooks_src]
 inc = include_directories('include')
